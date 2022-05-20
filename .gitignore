@@ -1,2 +1,5 @@
+*.png
+*.jpg
 ./src/icon/
 ./build/classes/icon/
+/dist/
