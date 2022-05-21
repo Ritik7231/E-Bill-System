@@ -112,16 +112,17 @@ public class Login extends JFrame implements ActionListener{
                     JOptionPane.showMessageDialog(null,"Invalid Login");
                     uname.setText("");
                     pass.setText("");
-                }
-                
+                }    
             }
             catch(Exception e){
                 e.printStackTrace();
             }
-        }else if(a.getSource()==bsignup){
+        }
+        else if(a.getSource()==bsignup){
             setVisible(false);
             new Signup();
-        }else if(a.getSource()==bcancel){
+        }
+        else if(a.getSource()==bcancel){
             setVisible(false);
         }
     }
