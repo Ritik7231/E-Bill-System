@@ -9,6 +9,8 @@ import java.awt.event.*;
 public class Signup extends JFrame implements ActionListener{
     
     JButton cre,back;
+    JTextField meter,user,name,pass;
+    Choice acc;
     Signup(){
         
         super("SignUp Page");
@@ -26,7 +28,7 @@ public class Signup extends JFrame implements ActionListener{
         JLabel i1 = new JLabel("Create Account As");
         i1.setBounds(80,20,150,20);
         pan.add(i1);
-        Choice acc = new Choice();
+        acc = new Choice();
         acc.setBounds(230,20,150,20);
         acc.add("Admin");
         acc.add("Customer");
@@ -35,28 +37,28 @@ public class Signup extends JFrame implements ActionListener{
         JLabel i10 = new JLabel("Meter Number");
         i10.setBounds(80,60,150,20);
         pan.add(i10);
-        JTextField meter = new JTextField();
+        meter = new JTextField();
         meter.setBounds(230,60,150,20);
         pan.add(meter); 
         
         JLabel i2 = new JLabel("Username");
         i2.setBounds(80,100,150,20);
         pan.add(i2);
-        JTextField user = new JTextField();
+        user = new JTextField();
         user.setBounds(230,100,150,20);
         pan.add(user);
         
         JLabel i3 = new JLabel("Name");
         i3.setBounds(80,140,150,20);
         pan.add(i3);
-        JTextField name = new JTextField();
+        name = new JTextField();
         name.setBounds(230,140,150,20);
         pan.add(name);
         
         JLabel i4 = new JLabel("Password");
         i4.setBounds(80,180,150,20);
         pan.add(i4);
-        JTextField pass = new JTextField();
+        pass = new JTextField();
         pass.setBounds(230,180,150,20);
         pan.add(pass);
         
@@ -91,7 +93,27 @@ public class Signup extends JFrame implements ActionListener{
             setVisible(false);
             new Login();
         }else if(a.getSource()==cre){
+            String actype = acc.getSelectedItem();
+            String suser = user.getText();
+            String sname = name.getText();
+            String smeter = meter.getText();
+            String spass = pass.getText();
             
+            try{
+                Conn c = new Conn();
+                String query = "insert into login values('"+smeter+"','"+suser+"','"+sname+"','"+spass+"','"+actype+"')";
+                
+                c.s.executeUpdate(query);
+                
+                JOptionPane.showMessageDialog(null,"Account created Successfully");
+                
+                setVisible(false);
+                new Login();
+            }
+            catch(Exception e)
+            {
+                e.printStackTrace();
+            }
         }
     }
     
