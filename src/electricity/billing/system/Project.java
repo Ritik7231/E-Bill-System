@@ -227,10 +227,7 @@ public class Project extends JFrame implements ActionListener{
         {
             new CalculateBill();
         }
-        else if(msg.equals("Customer Details"))
-        {
-            
-        }
+ 
         else if(msg.equals("Customer Details"))
         {
             
