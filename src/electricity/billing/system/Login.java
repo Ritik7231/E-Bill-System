@@ -96,7 +96,7 @@ public class Login extends JFrame implements ActionListener{
             String username = uname.getText();
             String password = pass.getText();
             String loginact = logas.getSelectedItem();
-            
+            String meterno = "";
             try{
                 Conn c = new Conn();
                 String query = "select * from login where username='"+username+"' and password='"+password+"' and user_typ='"+loginact+"'";
@@ -105,7 +105,8 @@ public class Login extends JFrame implements ActionListener{
                
                 if(rs.next()){
                     setVisible(false);
-                    new Project(loginact);
+                    meterno = rs.getString("meter_no");
+                    new Project(loginact,meterno);
                 }
                 else
                 {

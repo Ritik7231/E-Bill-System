@@ -7,10 +7,11 @@ import java.awt.event.*;
 
 public class Project extends JFrame implements ActionListener{
     
-    String user_type;
-    Project(String user_type){
+    String user_type,meter_numb;
+    Project(String user_type,String meter_numb){
         
         this.user_type = user_type;
+        this.meter_numb = meter_numb;
         setExtendedState(JFrame.MAXIMIZED_BOTH);
  
         ImageIcon im = new ImageIcon(ClassLoader.getSystemResource("icon/elect1.jpg"));
@@ -216,11 +217,8 @@ public class Project extends JFrame implements ActionListener{
             mb.add(user);
             mb.add(rep);
         }
-        else
-        {
-            mb.add(ut);
-            mb.add(exit);
-        }
+        mb.add(ut);
+        mb.add(exit);
  
         setLayout(new FlowLayout());
         
@@ -247,9 +245,9 @@ public class Project extends JFrame implements ActionListener{
             new CalculateBill();
         }
  
-        else if(msg.equals("Customer Details"))
+        else if(msg.equals("View Information"))
         {
-            
+            new ViewInformation(meter_numb);
         }
         else if(msg.equals("Customer Details"))
         {
@@ -267,6 +265,6 @@ public class Project extends JFrame implements ActionListener{
     }
     
     public static void main(String[] args){
-        new Project("");
+        new Project("","");
     }
 }
