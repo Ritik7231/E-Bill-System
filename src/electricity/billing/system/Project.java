@@ -7,8 +7,10 @@ import java.awt.event.*;
 
 public class Project extends JFrame implements ActionListener{
     
-    Project(){
+    String user_type;
+    Project(String user_type){
         
+        this.user_type = user_type;
         setExtendedState(JFrame.MAXIMIZED_BOTH);
  
         ImageIcon im = new ImageIcon(ClassLoader.getSystemResource("icon/elect1.jpg"));
@@ -24,7 +26,7 @@ public class Project extends JFrame implements ActionListener{
     
         JMenu mas = new JMenu("Master");
         mas.setForeground(Color.BLUE);
-        mb.add(mas);
+
         
         JMenuItem it1 = new JMenuItem("New Customer");
         it1.setFont(new Font("monospaced",Font.PLAIN,12));
@@ -79,7 +81,7 @@ public class Project extends JFrame implements ActionListener{
     
         JMenu info = new JMenu("Information");
         info.setForeground(Color.RED);
-        mb.add(info);
+        
 
         JMenuItem it5 = new JMenuItem("Update Information");
         it5.setFont(new Font("monospaced",Font.PLAIN,12));
@@ -110,7 +112,7 @@ public class Project extends JFrame implements ActionListener{
     
         JMenu user = new JMenu("User");
         user.setForeground(Color.BLUE);
-        mb.add(user);
+        
 
         JMenuItem it7 = new JMenuItem("Pay Bill");
         it7.setFont(new Font("monospaced",Font.PLAIN,12));
@@ -141,7 +143,7 @@ public class Project extends JFrame implements ActionListener{
     
         JMenu rep = new JMenu("Report");
         rep.setForeground(Color.RED);
-        mb.add(rep);
+        
 
         JMenuItem it9 = new JMenuItem("Generate BIll");
         it9.setFont(new Font("monospaced",Font.PLAIN,12));
@@ -159,7 +161,7 @@ public class Project extends JFrame implements ActionListener{
         
         JMenu ut = new JMenu("Utility");
         ut.setForeground(Color.BLUE);
-        mb.add(ut);
+        
 
         JMenuItem it10 = new JMenuItem("Notepad");
         it10.setFont(new Font("monospaced",Font.PLAIN,12));
@@ -189,7 +191,7 @@ public class Project extends JFrame implements ActionListener{
     
         JMenu exit = new JMenu("Exit");
         exit.setForeground(Color.RED);
-        mb.add(exit);
+        
 
         JMenuItem it12 = new JMenuItem("Exit");
         it12.setFont(new Font("monospaced",Font.PLAIN,12));
@@ -202,7 +204,24 @@ public class Project extends JFrame implements ActionListener{
         
         it12.addActionListener(this);
         exit.add(it12);
-    
+        
+        
+        if(user_type.equals("Admin"))
+        {
+            mb.add(mas);
+        }
+        else if(user_type.equals("Customer"))
+        {
+            mb.add(info);
+            mb.add(user);
+            mb.add(rep);
+        }
+        else
+        {
+            mb.add(ut);
+            mb.add(exit);
+        }
+ 
         setLayout(new FlowLayout());
         
         setVisible(true);
@@ -248,6 +267,6 @@ public class Project extends JFrame implements ActionListener{
     }
     
     public static void main(String[] args){
-        new Project();
+        new Project("");
     }
 }

@@ -5,6 +5,7 @@ import javax.swing.*;
 import java.awt.*;
 import javax.swing.border.*;
 import java.awt.event.*;
+import java.sql.*;
 
 public class Signup extends JFrame implements ActionListener{
     
@@ -24,15 +25,6 @@ public class Signup extends JFrame implements ActionListener{
         pan.setBorder(new TitledBorder(new LineBorder(new Color(173,216,230),2),"Create-Account",TitledBorder.LEADING,TitledBorder.TOP,null,new Color(173,216,230)));
         pan.setBackground(Color.WHITE);
         add(pan);
-        
-        JLabel i1 = new JLabel("Create Account As");
-        i1.setBounds(80,20,150,20);
-        pan.add(i1);
-        acc = new Choice();
-        acc.setBounds(230,20,150,20);
-        acc.add("Admin");
-        acc.add("Customer");
-        pan.add(acc);
   
         JLabel i10 = new JLabel("Meter Number");
         i10.setBounds(80,60,150,20);
@@ -40,6 +32,9 @@ public class Signup extends JFrame implements ActionListener{
         meter = new JTextField();
         meter.setBounds(230,60,150,20);
         pan.add(meter); 
+        
+        meter.setVisible(false);
+        i10.setVisible(false);
         
         JLabel i2 = new JLabel("Username");
         i2.setBounds(80,100,150,20);
@@ -54,7 +49,59 @@ public class Signup extends JFrame implements ActionListener{
         name = new JTextField();
         name.setBounds(230,140,150,20);
         pan.add(name);
+
+        JLabel i1 = new JLabel("Create Account As");
+        i1.setBounds(80,20,150,20);
+        pan.add(i1);
+        acc = new Choice();
+        acc.setBounds(230,20,150,20);
+        acc.add("Admin");
+        acc.add("Customer");
         
+        acc.addItemListener(new ItemListener(){
+            public void itemStateChanged(ItemEvent a)
+            {
+                String str = acc.getSelectedItem();
+                if(str.equals("Admin"))
+                {
+                    meter.setVisible(false);
+                    i10.setVisible(false); 
+                    name.setEditable(true);
+                }
+                else
+                {
+                    meter.setVisible(true);
+                    i10.setVisible(true);
+                    name.setEditable(false);
+                }
+            }
+        });
+        pan.add(acc);
+
+        
+        meter.addFocusListener(new FocusListener(){
+           
+            public void focusGained(FocusEvent a){
+                
+            }
+            public void focusLost(FocusEvent b){
+ 
+                try{
+                    Conn c = new Conn();
+                    ResultSet rs = c.s.executeQuery("select * from customer where meter_no='"+meter.getText()+"'");
+                    if(rs.next())
+                    {
+                        name.setText(rs.getString("name"));
+                    }                                          
+                }
+                catch(Exception e)
+                {
+                    e.printStackTrace();
+                }
+ 
+            }
+        });
+               
         JLabel i4 = new JLabel("Password");
         i4.setBounds(80,180,150,20);
         pan.add(i4);
@@ -101,14 +148,30 @@ public class Signup extends JFrame implements ActionListener{
             
             try{
                 Conn c = new Conn();
-                String query = "insert into login values('"+smeter+"','"+suser+"','"+sname+"','"+spass+"','"+actype+"')";
-                
-                c.s.executeUpdate(query);
-                
-                JOptionPane.showMessageDialog(null,"Account created Successfully");
-                
-                setVisible(false);
-                new Login();
+                if(actype.equals("Admin"))
+                {
+                    String query1 = "insert into login values('"+smeter+"','"+suser+"','"+sname+"','"+spass+"','"+actype+"')";       
+                    c.s.executeUpdate(query1);
+                    JOptionPane.showMessageDialog(null,"Account created Successfully");
+                    setVisible(false);
+                    new Login();
+                }
+                else
+                {
+                    ResultSet rs = c.s.executeQuery("select * from customer where meter_no='"+smeter+"'");
+                    if(rs.next())
+                    {
+                        String query2 = "update login set  username='"+suser+"',password='"+spass+"',user_typ='"+actype+"' where meter_no='"+smeter+"'";       
+                        c.s.executeUpdate(query2);
+                        JOptionPane.showMessageDialog(null,"Account Updated Successfully");
+                        setVisible(false);  
+                        new Login();
+                    }
+                    else
+                    {
+                        JOptionPane.showMessageDialog(null,"No Such Customer Exits");
+                    }
+                }
             }
             catch(Exception e)
             {

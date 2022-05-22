@@ -105,7 +105,7 @@ public class Login extends JFrame implements ActionListener{
                
                 if(rs.next()){
                     setVisible(false);
-                    new Project();
+                    new Project(loginact);
                 }
                 else
                 {
