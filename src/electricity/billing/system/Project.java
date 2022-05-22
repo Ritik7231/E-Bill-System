@@ -5,7 +5,7 @@ import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
 
-public class Project extends JFrame{
+public class Project extends JFrame implements ActionListener{
     
     Project(){
         
@@ -34,6 +34,8 @@ public class Project extends JFrame{
         it1.setIcon(new ImageIcon(ima1));
         it1.setMnemonic('D');
         it1.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_D,ActionEvent.CTRL_MASK));
+        
+        it1.addActionListener(this);
         mas.add(it1);
         
         JMenuItem it2 = new JMenuItem("Customer Details");
@@ -44,6 +46,8 @@ public class Project extends JFrame{
         it2.setIcon(new ImageIcon(ima2));
         it2.setMnemonic('M');
         it2.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_M,ActionEvent.CTRL_MASK));
+        
+        it2.addActionListener(this);
         mas.add(it2);
         
         JMenuItem it3 = new JMenuItem("Deposit Details");
@@ -54,6 +58,8 @@ public class Project extends JFrame{
         it3.setIcon(new ImageIcon(ima3));
         it3.setMnemonic('N');
         it3.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_N,ActionEvent.CTRL_MASK));
+        
+        it3.addActionListener(this);
         mas.add(it3);        
   
         JMenuItem it4 = new JMenuItem("Calculate eBill");
@@ -64,6 +70,8 @@ public class Project extends JFrame{
         it4.setIcon(new ImageIcon(ima4));
         it4.setMnemonic('B');
         it4.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_B,ActionEvent.CTRL_MASK));
+        
+        it4.addActionListener(this);
         mas.add(it4);
         
     // Menu 2 : Information
@@ -81,6 +89,8 @@ public class Project extends JFrame{
         it5.setIcon(new ImageIcon(ima5));
         it5.setMnemonic('P');
         it5.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_P,ActionEvent.CTRL_MASK));
+        
+        it5.addActionListener(this);
         info.add(it5);
  
         
@@ -92,6 +102,8 @@ public class Project extends JFrame{
         it6.setIcon(new ImageIcon(ima6));
         it6.setMnemonic('L');
         it6.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_L,ActionEvent.CTRL_MASK));
+        
+        it6.addActionListener(this);
         info.add(it6);
         
     // Menu 3 : User
@@ -108,6 +120,8 @@ public class Project extends JFrame{
         it7.setIcon(new ImageIcon(ima7));
         it7.setMnemonic('R');
         it7.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_R,ActionEvent.CTRL_MASK));
+        
+        it7.addActionListener(this);
         user.add(it7);
  
         
@@ -119,6 +133,8 @@ public class Project extends JFrame{
         it8.setIcon(new ImageIcon(ima8));
         it8.setMnemonic('K');
         it8.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_K,ActionEvent.CTRL_MASK));
+        
+        it8.addActionListener(this);
         user.add(it8);
      
     // Menu 4 : View eBill Slip
@@ -135,6 +151,8 @@ public class Project extends JFrame{
         it9.setIcon(new ImageIcon(ima9));
         it9.setMnemonic('V');
         it9.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_V,ActionEvent.CTRL_MASK));
+        
+        it9.addActionListener(this);
         rep.add(it9);
         
     // Menu 5 : Utility
@@ -151,6 +169,8 @@ public class Project extends JFrame{
         it10.setIcon(new ImageIcon(ima10));
         it10.setMnemonic('N');
         it10.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_N,ActionEvent.CTRL_MASK));
+        
+        it10.addActionListener(this);
         ut.add(it10);
         
         JMenuItem it11 = new JMenuItem("Calculator");
@@ -161,6 +181,8 @@ public class Project extends JFrame{
         it11.setIcon(new ImageIcon(ima11));
         it11.setMnemonic('C');
         it11.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_C,ActionEvent.CTRL_MASK));
+        
+        it11.addActionListener(this);
         ut.add(it11);
         
     // Menu 6 : Exit
@@ -177,11 +199,55 @@ public class Project extends JFrame{
         it12.setIcon(new ImageIcon(ima12));
         it12.setMnemonic('W');
         it12.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_W,ActionEvent.CTRL_MASK));
+        
+        it12.addActionListener(this);
         exit.add(it12);
     
         setLayout(new FlowLayout());
         
         setVisible(true);
+    }
+    
+    public void actionPerformed(ActionEvent a)
+    {
+        String msg = a.getActionCommand();
+        if(msg.equals("New Customer"))
+        {
+            new NewCustomer();
+        }
+        else if(msg.equals("Customer Details"))
+        {
+            
+        }
+        else if(msg.equals("Deposit Details"))
+        {
+            
+        }
+        else if(msg.equals("Calculate eBill"))
+        {
+            new CalculateBill();
+        }
+        else if(msg.equals("Customer Details"))
+        {
+            
+        }
+        else if(msg.equals("Customer Details"))
+        {
+            
+        }
+        else if(msg.equals("Customer Details"))
+        {
+            
+        }
+        else if(msg.equals("Customer Details"))
+        {
+            
+        }
+        
+        
+        
+        
+        
     }
     
     public static void main(String[] args){
