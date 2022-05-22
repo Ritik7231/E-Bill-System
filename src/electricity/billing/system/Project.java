@@ -221,7 +221,7 @@ public class Project extends JFrame implements ActionListener{
         }
         else if(msg.equals("Deposit Details"))
         {
-            
+            new DepositDetails();
         }
         else if(msg.equals("Calculate eBill"))
         {
