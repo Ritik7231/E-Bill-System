@@ -249,9 +249,9 @@ public class Project extends JFrame implements ActionListener{
         {
             new ViewInformation(meter_numb);
         }
-        else if(msg.equals("Customer Details"))
+        else if(msg.equals("Update Information"))
         {
-            
+            new UpdateInformation(meter_numb);
         }
         else if(msg.equals("Customer Details"))
         {
