@@ -12,6 +12,7 @@ public class ViewInformation extends JFrame implements ActionListener{
     String meter_no;
     ViewInformation(String meter_no)
     {
+        super("User Information");
         this.meter_no = meter_no;
         setBounds(200,20,850,650);
         setLayout(null);

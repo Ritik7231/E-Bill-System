@@ -253,15 +253,36 @@ public class Project extends JFrame implements ActionListener{
         {
             new UpdateInformation(meter_numb);
         }
-        else if(msg.equals("Customer Details"))
+        else if(msg.equals("Bill Details"))
         {
-            
+            new BillDetails(meter_numb);
         }
-        
-        
-        
-        
-        
+        else if(msg.equals("Notepad"))
+        {
+            try{
+                Runtime.getRuntime().exec("notepad.exe");
+            }
+            catch(Exception e)
+            {
+                e.printStackTrace();
+            }
+        }
+        else if(msg.equals("Calculator"))
+        {
+            try{
+                Runtime.getRuntime().exec("calc.exe");
+            }
+            catch(Exception e)
+            {
+                e.printStackTrace();
+            }
+        }
+        else if(msg.equals("Exit"))
+        {
+            setVisible(false);
+            new Login();
+        }
+              
     }
     
     public static void main(String[] args){

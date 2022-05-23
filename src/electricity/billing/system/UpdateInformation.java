@@ -13,6 +13,7 @@ public class UpdateInformation extends JFrame implements ActionListener{
     String meter_no;
     UpdateInformation(String meter_no){
         
+        super("User Information");
         this.meter_no = meter_no;
         setBounds(100,100,1050,450);
         setLayout(null);
