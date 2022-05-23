@@ -286,7 +286,10 @@ public class Project extends JFrame implements ActionListener{
         {
             new PayBill(meter_numb);
         }
-              
+        else if(msg.equals("Generate Bill"))
+        {
+            new GenerateBill(meter_numb);
+        }         
     }
     
     public static void main(String[] args){
