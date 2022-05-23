@@ -123,6 +123,6 @@ public class ViewInformation extends JFrame implements ActionListener{
     }
     public static void main(String[] args)
     {
-        new ViewInformation("81166320");
+        new ViewInformation("");
     }
 }

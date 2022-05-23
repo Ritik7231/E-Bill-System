@@ -211,7 +211,7 @@ public class PayBill extends JFrame implements ActionListener{
     
     public static void main(String[] args)
     {
-        new PayBill("81166320");
+        new PayBill("");
     }
     
 }

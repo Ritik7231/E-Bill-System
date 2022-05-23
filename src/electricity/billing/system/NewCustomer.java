@@ -50,7 +50,8 @@ public class NewCustomer extends JFrame implements ActionListener{
         
         Random num = new Random();
         mnumber = num.nextLong() %1000000000;
-        mnumb.setText("" + Math.abs(mnumber));
+        mnumber = Math.abs(mnumber);
+        mnumb.setText("" + mnumber);
 
     // Field 3 : Address
         JLabel addr = new JLabel("Address");
@@ -152,8 +153,7 @@ public class NewCustomer extends JFrame implements ActionListener{
                 
                 JOptionPane.showMessageDialog(null,"Customer details added successfully");
                 setVisible(false);
-                
-                new MeterInfo(Math.abs(mnumber));
+                new MeterInfo(mnumber);
             }
             catch(Exception e)
             {

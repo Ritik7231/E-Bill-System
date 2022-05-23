@@ -51,7 +51,7 @@ public class Paytm extends JFrame implements ActionListener{
     
     public static void main(String[] args)
     {
-        new Paytm("81166320");
+        new Paytm("");
     }
     
 }

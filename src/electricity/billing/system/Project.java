@@ -146,7 +146,7 @@ public class Project extends JFrame implements ActionListener{
         rep.setForeground(Color.RED);
         
 
-        JMenuItem it9 = new JMenuItem("Generate BIll");
+        JMenuItem it9 = new JMenuItem("Generate Bill");
         it9.setFont(new Font("monospaced",Font.PLAIN,12));
         it9.setBackground(Color.WHITE);
         ImageIcon im9 = new ImageIcon(ClassLoader.getSystemResource("icon/bill.png"));

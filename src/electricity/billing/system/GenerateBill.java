@@ -131,6 +131,6 @@ public class GenerateBill extends JFrame implements ActionListener{
     
     public static void main(String[] args)
     {
-        new GenerateBill("-670733861");
+        new GenerateBill("");
     }
 }

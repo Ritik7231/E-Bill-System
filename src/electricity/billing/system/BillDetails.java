@@ -39,6 +39,6 @@ public class BillDetails extends JFrame{
     public static void main(String[] args)
     {
         
-        new BillDetails("81166320");
+        new BillDetails("");
     }
 }

@@ -135,7 +135,7 @@ public class UpdateInformation extends JFrame implements ActionListener{
             String state = tfstate.getText();
             String add = tfadd.getText();
             
-            String query = "update customer set address='"+add+"',city='"+city+"',state='"+city+"',email='"+email+"',pnumber='"+pno+"' where meter_no='"+meter_no+"'";
+            String query = "update customer set address='"+add+"',city='"+city+"',state='"+state+"',email='"+email+"',pnumber='"+pno+"' where meter_no='"+meter_no+"'";
             
             try{
                 Conn c = new Conn();
@@ -155,6 +155,6 @@ public class UpdateInformation extends JFrame implements ActionListener{
     }
     public static void main(String[] args)
     {
-        new UpdateInformation("81166320");
+        new UpdateInformation("");
     }
 }
