@@ -282,6 +282,10 @@ public class Project extends JFrame implements ActionListener{
             setVisible(false);
             new Login();
         }
+        else if(msg.equals("Pay Bill"))
+        {
+            new PayBill(meter_numb);
+        }
               
     }
     
